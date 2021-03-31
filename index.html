@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-HX738SQP4S"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-HX738SQP4S");
+    </script>
+    <title>National Burrito Day</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .info {
+        top: 20%;
+        margin: 0 auto;
+        position: absolute;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+      }
+
+      .bandb {
+        font-weight: bolder;
+      }
+
+      .headline {
+        font-size: 2em;
+        margin: 1em 0;
+      }
+
+      .redirect {
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      .callback {
+        position: fixed;
+        bottom: 2em;
+        width: 100%;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info">
+      <p class="headline">
+        You are looking for <span class="bandb">burritosorbitcoin.com</span>
+      </p>
+      <p class="redirect">
+        You will be automatically redirected in
+        <span id="counter">5</span> seconds...
+      </p>
+      <p class="callback">
+        This redirect page was made courtesy of
+        <a href="https://www.linkedin.com/in/luke-ingalls/">Luke Ingalls</a>
+      </p>
+    </div>
+    <script>
+      const redirect = () => {
+        window.location = "https://burritosorbitcoin.com";
+      };
+      const counter = document.querySelector("#counter");
+      const interval = setInterval(() => {
+        const currentValue = parseInt(counter.innerText);
+        if (currentValue === 0) {
+          clearInterval(interval);
+          redirect();
+          return;
+        }
+        counter.innerHTML = currentValue - 1;
+      }, 1000);
+    </script>
+  </body>
+</html>
