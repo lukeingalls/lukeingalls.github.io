@@ -198,7 +198,23 @@ export const posts: Post[] = [
       "/images/jobs/golf_5.jpg",
       "/images/jobs/golf_6.png",
     ],
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          I loved this job. I worked at both Aurora Hills and Saddle Rock golf
+          courses in Aurora, CO. It built some good habits like waking up early
+          and I also thought it was fun driving all the equipment.
+        </p>
+        <br />
+        <p>
+          There was typical work annoyances but overall working outside on
+          machinery was great. I also got exposed to golf through this. I
+          initially played because it was a free benefit but I grew to enjoy it.
+          I also really liked playing the country clubs with my bosses since
+          they could get us on for free.
+        </p>
+      </>
+    ),
     location: "Aurora, CO",
     startedAt: new Date("2017-06-10"),
     endedAt: new Date("2021-06-30"),
@@ -208,7 +224,31 @@ export const posts: Post[] = [
     type: "post",
     category: Category.jobs,
     images: ["/images/jobs/canes.JPG"],
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          Cane&apos;s is still probably my favorite fast food restaurant. I
+          applied there before knowing what it was. We just saw the signs that a
+          new chicken place was going in and I wanted a job during the school
+          year. I still worked some weekends at the golf course but this was
+          supposed to be more regular.
+        </p>
+        <br />
+        <p>
+          In the end, this was a terrible fit. They continued to schedule me
+          closing shifts (which could go till 2am) and that made it difficult to
+          balance with school. I also learned a good lesson about pay here. I
+          was making pretty much the least there because I hadn&apos;t
+          negotiated at all. It was frustrating making $2 less an hour than
+          other people in the same position.
+        </p>
+        <br />
+        <p>
+          I did like the legal curfew exception. Going to McDonalds or Walmart
+          that late riding around in my convertabile are fond memories.
+        </p>
+      </>
+    ),
     location: "Parker, CO",
     startedAt: new Date("2017-08-10"),
     endedAt: new Date("2017-09-30"),
@@ -218,8 +258,25 @@ export const posts: Post[] = [
     type: "post",
     category: Category.jobs,
     images: ["/images/jobs/schwab.png", "/images/jobs/schwab_2.png"],
-    description: "This is a 2015 Toyota Camry",
-    location: "Lone Tree, CO",
+    description: (
+      <>
+        <p>
+          This was my first developer experience. I was working on Schwab&apos;s
+          design system. They were using Angular and StencilJS to build their
+          internal component system and I supported this initiative.
+        </p>
+
+        <br />
+        <p>
+          I learned best practices in component-based architecture as well as
+          some of the nitty-gritty of CSS. This was a remote internship during
+          COVID. I&apos;m still really thankful to Schwab for continuing the
+          program given the uncertainty. I also found their internal culture to
+          be sincere and continue to hold my money there to this day.
+        </p>
+      </>
+    ),
+    location: "Remote (Lone Tree, CO)",
     startedAt: new Date("2020-06-01"),
     endedAt: new Date("2020-08-31"),
     title: "intern @ schwab",
@@ -228,7 +285,30 @@ export const posts: Post[] = [
     type: "post",
     category: Category.jobs,
     images: ["/images/jobs/kapwing.jpeg", "/images/jobs/kapwing_2.png"],
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          Kapwing is my first full-time software engineeing experinece.
+          It&apos;s hard to sum up this experience because I&apos;ve done so
+          much there.
+        </p>
+        <br />
+        <p>
+          I started while I was still finishing the last semester of College as
+          a Junior engineer. By the summer, I got promoted to an L4 engineer. At
+          the time of writing this, I&apos;m an L6 staff engineer and have
+          worked on the entire stack there.
+        </p>
+        <br />
+        <p>
+          My biggest accomplishments have been shipping large AI features as
+          well as making improvements to the performance and reliablity of the
+          app. For about 2 years, I was managing teams in both of these areas
+          (and peaked at 6 reports). We shipped the dubbing tool and scaled
+          performance capabilities by 100x.
+        </p>
+      </>
+    ),
     location: "San Francisco, CA",
     startedAt: new Date("2021-04-12"),
     title: "engineer @ kapwing",
