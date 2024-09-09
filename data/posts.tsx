@@ -6,7 +6,35 @@ export const posts: Post[] = [
     category: Category.automobiles,
     images: ["/images/cars/camry.jpeg", "/images/cars/camry_2.webp"],
     title: "red toyota camry",
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          This is a 2005 Toyota Camry. It was originally my Dad&apos;s and was
+          used by me and my brothers off and on during high school.
+        </p>
+        <br />
+        <p>
+          It met it&apos;s end at my hands. I was driving home from work on
+          Parker road and came across a buckle in the road. I tried to stop but
+          couldn&apos;t get the car to slow down fast enough ended up hitting
+          the car in front of me.
+        </p>
+        <br />
+        <p>
+          The lady I hit was super nice. I totally rear end her again. As we
+          waited for emergency responders to help, another rear end accident
+          happened. I felt slightly vindicated because even with the visual sign
+          of a previous crash before the road buckle, this dude still started
+          another accident.
+        </p>
+        <br />
+        <p>
+          Unfortunately for him, he had a suspended license and was arrested. I
+          got off with just a ticket.
+        </p>
+        <br />
+      </>
+    ),
     location: "Parker, CO",
     startedAt: new Date("2018-07-10"),
     endedAt: new Date("2019-08-03"),
