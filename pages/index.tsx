@@ -1,8 +1,9 @@
+import { usePosts } from "@/contexts/posts";
 import { posts } from "@/data/posts";
 import { Category, Post } from "@/data/types";
 import displayTimeSince from "@/utils/displayTimeSince";
 import postTitleToSlug from "@/utils/postTitleToSlug";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useState } from "react";
 
 function Header() {
   return (
@@ -20,11 +21,65 @@ function Header() {
           <option>all</option>
         </select>
       </div>
-      {/* <div className="flex items-center space-x-4 pr-4">
-        <button className="text-green-700 hover:text-green-900">post</button>
-        <button className="text-gray-700 hover:text-black">acct</button>
-      </div> */}
+      <div className="flex items-center space-x-4 pr-4">
+        <button
+          className="text-green-700 hover:text-green-900"
+          onClick={() => {
+            navigator.share({
+              url: window.location.href,
+            });
+          }}
+        >
+          share
+        </button>
+        {/* <button className="text-gray-700 hover:text-black">acct</button> */}
+      </div>
     </header>
+  );
+}
+
+function CategoryItem({
+  category,
+  count,
+}: {
+  category: Category;
+  count: number;
+}) {
+  const { pushFilter } = usePosts();
+  const id = useId();
+
+  useEffect(() => {
+    return () => {
+      pushFilter(id, () => true);
+    };
+  }, [pushFilter, id]);
+
+  return (
+    <Fragment>
+      <div
+        onClick={() => document.getElementById(`checkbox-${category}`)?.click()}
+      >
+        {category}
+      </div>
+      <div
+        onClick={() => document.getElementById(`checkbox-${category}`)?.click()}
+      >
+        {count}
+      </div>
+      <input
+        id={`checkbox-${category}`}
+        type="checkbox"
+        className="form-checkbox h-4 w-4 text-blue-600 justify-self-end cursor-pointer"
+        defaultChecked
+        onChange={(el) => {
+          if (!el.target.checked) {
+            pushFilter(id, (post) => post.category !== category);
+          } else {
+            pushFilter(id, () => true);
+          }
+        }}
+      />
+    </Fragment>
   );
 }
 
@@ -64,27 +119,11 @@ function Sidebar({
         </div>
         <div className="text-blue-600 text-sm grid grid-cols-[1fr,auto,auto] gap-2 cursor-pointer">
           {categories.map((category) => (
-            <Fragment key={category.name}>
-              <div
-                onClick={() =>
-                  document.getElementById(`checkbox-${category.name}`)?.click()
-                }
-              >
-                {category.name}
-              </div>
-              <div
-                onClick={() =>
-                  document.getElementById(`checkbox-${category.name}`)?.click()
-                }
-              >
-                {category.count}
-              </div>
-              <input
-                id={`checkbox-${category.name}`}
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600 justify-self-end cursor-pointer"
-              />
-            </Fragment>
+            <CategoryItem
+              key={category.name}
+              category={category.name}
+              count={category.count}
+            />
           ))}
         </div>
       </aside>
@@ -159,12 +198,37 @@ function ItemCard({ post }: ItemCardProps) {
 }
 
 function SearchBar() {
+  const { sortBy, sortKey, sortDirection, pushFilter } = usePosts();
+  const id = useId();
+
+  const handleSort = (key: keyof Post) => {
+    if (sortKey !== key) {
+      sortBy(key, "asc");
+    } else if (sortDirection === "asc") {
+      sortBy(key, "desc");
+    } else {
+      sortBy();
+    }
+  };
+
+  const getSortIcon = (key: keyof Post) => {
+    if (sortKey !== key) return "";
+    return sortDirection === "asc" ? "↑" : "↓";
+  };
+
+  useEffect(() => {
+    return () => {
+      pushFilter(id, () => true);
+      sortBy();
+    };
+  }, [sortBy, pushFilter, id]);
+
   return (
     <div className="sticky top-[45px] bg-white border-b border-gray-300 py-4 z-40">
       <div className="flex items-center gap-2 h-[45px]">
         <input
           type="text"
-          placeholder="search for sale"
+          placeholder="search for posts"
           className="w-full border border-gray-300 rounded p-2"
         />
         <button className="bg-gray-100 text-black p-2 border border-gray-300 rounded w-[45px]">
@@ -172,9 +236,30 @@ function SearchBar() {
         </button>
       </div>
       <div className="flex mt-2 gap-2">
-        <button className="bg-gray-200 p-2 rounded">price</button>
-        <button className="bg-gray-200 p-2 rounded">condition</button>
-        <button className="bg-gray-200 p-2 rounded">by dealer</button>
+        <button
+          className={`bg-gray-200 p-2 rounded ${
+            sortKey === "startedAt" ? "font-bold" : ""
+          }`}
+          onClick={() => handleSort("startedAt")}
+        >
+          started {getSortIcon("startedAt")}
+        </button>
+        <button
+          className={`bg-gray-200 p-2 rounded ${
+            sortKey === "title" ? "font-bold" : ""
+          }`}
+          onClick={() => handleSort("title")}
+        >
+          title {getSortIcon("title")}
+        </button>
+        <button
+          className={`bg-gray-200 p-2 rounded ${
+            sortKey === "type" ? "font-bold" : ""
+          }`}
+          onClick={() => handleSort("type")}
+        >
+          type {getSortIcon("type")}
+        </button>
       </div>
     </div>
   );
@@ -182,6 +267,7 @@ function SearchBar() {
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(true);
+  const { posts } = usePosts();
 
   return (
     <div>
@@ -199,6 +285,7 @@ export default function Home() {
             {posts.map((post) => (
               <ItemCard key={post.title} post={post} />
             ))}
+            {posts.length === 0 && <div>No posts match your search</div>}
           </div>
         </main>
       </div>
