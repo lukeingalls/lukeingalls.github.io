@@ -25,6 +25,7 @@ export type Post =
       | {
           type: "post";
           description: React.ReactNode;
+          map_img: string;
         }
       | {
           type: "link";

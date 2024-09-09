@@ -173,9 +173,13 @@ export default function PostPage({ title }: { title: string }) {
             </div>
 
             {/* Map Placeholder */}
-            <div className="border border-gray-300 p-4 rounded mb-4">
+            <div className="border border-gray-300 rounded mb-4">
               <div className="h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-                Map Placeholder
+                <img
+                  src={post.map_img}
+                  className="w-full h-full object-cover"
+                  alt={post.title}
+                />
               </div>
             </div>
           </div>

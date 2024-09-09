@@ -36,6 +36,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Parker, CO",
+    map_img: "/images/locations/camry.png",
     startedAt: new Date("2018-07-10"),
     endedAt: new Date("2019-08-03"),
   },
@@ -78,6 +79,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Parker, CO",
+    map_img: "/images/locations/camry.png",
     startedAt: new Date("2017-07-30"),
     endedAt: new Date("2018-07-04"),
   },
@@ -111,6 +113,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Parker, CO",
+    map_img: "/images/locations/chs.png",
     startedAt: new Date("2014-08-20"),
     endedAt: new Date("2018-05-24"),
   },
@@ -152,6 +155,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Boulder, CO",
+    map_img: "/images/locations/cu.png",
     startedAt: new Date("2018-08-20"),
     endedAt: new Date("2021-05-06"),
   },
@@ -216,6 +220,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Aurora, CO",
+    map_img: "/images/locations/golf.png",
     startedAt: new Date("2017-06-10"),
     endedAt: new Date("2021-06-30"),
     title: "golf worker",
@@ -252,6 +257,7 @@ export const posts: Post[] = [
     location: "Parker, CO",
     startedAt: new Date("2017-08-10"),
     endedAt: new Date("2017-09-30"),
+    map_img: "/images/locations/canes.png",
     title: "fry cook @ raising cane's",
   },
   {
@@ -277,6 +283,7 @@ export const posts: Post[] = [
       </>
     ),
     location: "Remote (Lone Tree, CO)",
+    map_img: "/images/locations/schwab.png",
     startedAt: new Date("2020-06-01"),
     endedAt: new Date("2020-08-31"),
     title: "intern @ schwab",
@@ -285,6 +292,7 @@ export const posts: Post[] = [
     type: "post",
     category: Category.jobs,
     images: ["/images/jobs/kapwing.jpeg", "/images/jobs/kapwing_2.png"],
+    map_img: "/images/locations/gg-ave.png",
     description: (
       <>
         <p>
