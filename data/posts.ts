@@ -130,4 +130,13 @@ export const posts: Post[] = [
     endedAt: new Date("2020-08-31"),
     title: "intern @ schwab",
   },
+  {
+    type: "post",
+    category: Category.jobs,
+    images: ["/images/jobs/kapwing.jpeg", "/images/jobs/kapwing_2.png"],
+    description: "This is a 2015 Toyota Camry",
+    location: "San Francisco, CA",
+    startedAt: new Date("2021-04-12"),
+    title: "engineer @ kapwing",
+  },
 ];

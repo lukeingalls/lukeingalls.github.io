@@ -9,7 +9,7 @@ export enum Category {
   // lostandfound = "lostandfound",
   // personals = "personals",
   contact = "contact",
-  housing = "housing",
+  // housing = "housing",
   automobiles = "automobiles",
 }
 

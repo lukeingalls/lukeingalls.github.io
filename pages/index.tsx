@@ -110,6 +110,7 @@ function ItemCard({ post }: ItemCardProps) {
       {/* Image Gallery */}
       <div className="relative w-full h-full group">
         <img
+          loading="lazy"
           src={post.images[currentImageIndex]}
           alt={post.title}
           className="w-full h-full object-cover rounded"
@@ -159,7 +160,7 @@ function ItemCard({ post }: ItemCardProps) {
 
 function SearchBar() {
   return (
-    <div className="sticky top-0 bg-white border-b border-gray-300 py-4 z-40">
+    <div className="sticky top-[45px] bg-white border-b border-gray-300 py-4 z-40">
       <div className="flex items-center gap-2 h-[45px]">
         <input
           type="text"
