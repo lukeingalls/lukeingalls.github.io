@@ -52,7 +52,7 @@ function Sidebar({
       >
         {/* Arrow Toggle Button */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-blue-700 text-xl font-semibold">for sale</h2>
+          <h2 className="text-blue-700 text-xl font-semibold">About Luke</h2>
           <button
             className={`${
               isOpen ? "" : "absolute left-[210px]"
@@ -62,14 +62,27 @@ function Sidebar({
             {isOpen ? "❮" : "❯"}
           </button>
         </div>
-        <div className="text-blue-600 text-sm grid grid-cols-[1fr,auto,auto] gap-2">
+        <div className="text-blue-600 text-sm grid grid-cols-[1fr,auto,auto] gap-2 cursor-pointer">
           {categories.map((category) => (
             <Fragment key={category.name}>
-              <div>{category.name}</div>
-              <div>{category.count}</div>
+              <div
+                onClick={() =>
+                  document.getElementById(`checkbox-${category.name}`)?.click()
+                }
+              >
+                {category.name}
+              </div>
+              <div
+                onClick={() =>
+                  document.getElementById(`checkbox-${category.name}`)?.click()
+                }
+              >
+                {category.count}
+              </div>
               <input
+                id={`checkbox-${category.name}`}
                 type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600 justify-self-end"
+                className="form-checkbox h-4 w-4 text-blue-600 justify-self-end cursor-pointer"
               />
             </Fragment>
           ))}

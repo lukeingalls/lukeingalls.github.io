@@ -92,4 +92,22 @@ export const posts: Post[] = [
     startedAt: new Date("2021-04-23"),
     title: "twitter account 🐦",
   },
+  {
+    type: "post",
+    category: Category.jobs,
+    images: [
+      "/images/jobs/golf.png",
+      "/images/jobs/golf_1.JPG",
+      "/images/jobs/golf_2.png",
+      "/images/jobs/golf_3.png",
+      "/images/jobs/golf_4.png",
+      "/images/jobs/golf_5.jpg",
+      "/images/jobs/golf_6.png",
+    ],
+    description: "This is a 2015 Toyota Camry",
+    location: "Aurora, CO",
+    startedAt: new Date("2017-06-10"),
+    endedAt: new Date("2021-06-30"),
+    title: "golf worker",
+  },
 ];
