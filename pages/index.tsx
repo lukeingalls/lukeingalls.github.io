@@ -92,7 +92,7 @@ function ItemCard({ images, title, date, city }: ItemCardProps) {
   return (
     <div className="border rounded shadow-md hover:shadow-lg transition-shadow aspect-square relative">
       {/* Image Gallery */}
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full group">
         <img
           src={images[currentImageIndex]}
           alt={title}
@@ -101,7 +101,7 @@ function ItemCard({ images, title, date, city }: ItemCardProps) {
         {images.length > 1 && (
           <>
             <button
-              className="absolute left-2 top-[40%] transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2"
+              className="absolute top-[35%] transform -translate-y-1/2 bg-white bg-opacity-50 p-2 hidden group-hover:block text-2xl rounded-r"
               onClick={() => {
                 setCurrentImageIndex((prevIndex) =>
                   prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -111,7 +111,7 @@ function ItemCard({ images, title, date, city }: ItemCardProps) {
               ❮
             </button>
             <button
-              className="absolute right-2 top-[40%] transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2"
+              className="absolute right-0 top-[35%] transform -translate-y-1/2 bg-white bg-opacity-50 p-2 hidden group-hover:block text-2xl rounded-l"
               onClick={() => {
                 setCurrentImageIndex((prevIndex) =>
                   prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -211,7 +211,7 @@ export default function Home() {
                 key={index}
                 images={post.images}
                 title={post.title}
-                date={displayTimeSince(post.startedAt)}
+                date={displayTimeSince(post.endedAt || post.startedAt)}
                 city={post.location}
               />
             ))}

@@ -13,12 +13,21 @@ export enum Category {
   automobiles = "automobiles",
 }
 
-export type Post = {
-  title: string;
-  description: string;
-  location: string;
-  images: string[];
-  startedAt: Date;
-  endedAt?: Date;
-  category: Category;
-};
+export type Post =
+  | {
+      title: string;
+      location: string;
+      images: string[];
+      startedAt: Date;
+      endedAt?: Date;
+      category: Category;
+    } & (
+      | {
+          type: "post";
+          description: string;
+        }
+      | {
+          type: "link";
+          url: string;
+        }
+    );
