@@ -1,6 +1,7 @@
 import { posts } from "@/data/posts";
-import { Category } from "@/data/types";
+import { Category, Post } from "@/data/types";
 import displayTimeSince from "@/utils/displayTimeSince";
+import postTitleToSlug from "@/utils/postTitleToSlug";
 import { Fragment, useMemo, useState } from "react";
 
 function Header() {
@@ -81,30 +82,34 @@ function Sidebar({
 import React from "react";
 
 interface ItemCardProps {
-  images: string[]; // Array of image URLs for the gallery
-  title: string;
-  date: string;
-  city: string;
+  post: Post;
 }
 
-function ItemCard({ images, title, date, city }: ItemCardProps) {
+function ItemCard({ post }: ItemCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const date = displayTimeSince(post.endedAt || post.startedAt);
   return (
-    <div className="border rounded shadow-md hover:shadow-lg transition-shadow aspect-square relative">
+    <a
+      className="border rounded shadow-md hover:shadow-lg transition-shadow aspect-square relative"
+      href={"url" in post ? post.url : postTitleToSlug(post)}
+      target={post.type === "link" ? "_blank" : undefined}
+    >
       {/* Image Gallery */}
       <div className="relative w-full h-full group">
         <img
-          src={images[currentImageIndex]}
-          alt={title}
+          src={post.images[currentImageIndex]}
+          alt={post.title}
           className="w-full h-full object-cover rounded"
         />
-        {images.length > 1 && (
+        {post.images.length > 1 && (
           <>
             <button
               className="absolute top-[35%] transform -translate-y-1/2 bg-white bg-opacity-50 p-2 hidden group-hover:block text-2xl rounded-r"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 setCurrentImageIndex((prevIndex) =>
-                  prevIndex === 0 ? images.length - 1 : prevIndex - 1
+                  prevIndex === 0 ? post.images.length - 1 : prevIndex - 1
                 );
               }}
             >
@@ -112,9 +117,11 @@ function ItemCard({ images, title, date, city }: ItemCardProps) {
             </button>
             <button
               className="absolute right-0 top-[35%] transform -translate-y-1/2 bg-white bg-opacity-50 p-2 hidden group-hover:block text-2xl rounded-l"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 setCurrentImageIndex((prevIndex) =>
-                  prevIndex === images.length - 1 ? 0 : prevIndex + 1
+                  prevIndex === post.images.length - 1 ? 0 : prevIndex + 1
                 );
               }}
             >
@@ -127,37 +134,15 @@ function ItemCard({ images, title, date, city }: ItemCardProps) {
       {/* Item Information */}
       <div className="absolute bottom-0 left-0 right-0 p-4 bg-white">
         <h3 className="text-blue-700 font-semibold text-lg mb-2 truncate">
-          {title}
+          {post.title}
         </h3>
         <div className="text-sm text-gray-500 truncate">
-          <span>{date}</span> &middot; <span>{city}</span>
+          <span>{date}</span> &middot; <span>{post.location}</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
-
-const items = [
-  {
-    images: ["/path-to-image1.jpg"], // Replace with your actual image paths
-    title: "2024 TESLA MODEL 3 PERFORMANCE",
-    date: "27 mins ago",
-    city: "city of san francisco",
-  },
-  {
-    images: ["/path-to-image2.jpg"], // Replace with your actual image paths
-    title: "2023 HONDA ODYSSEY ELITE",
-    date: "43 mins ago",
-    city: "Rancho Cordova",
-  },
-  {
-    images: ["/path-to-image3.jpg"], // Replace with your actual image paths
-    title: "Freightliner Cascadia",
-    date: "45 mins ago",
-    city: "Woodbridge",
-  },
-  // Add more items as needed
-];
 
 function SearchBar() {
   return (
@@ -197,23 +182,8 @@ export default function Home() {
           {/* Main content goes here */}
           <SearchBar />
           <div className="grid gap-4 py-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
-            {items.map((item, index) => (
-              <ItemCard
-                key={index}
-                images={item.images}
-                title={item.title}
-                date={item.date}
-                city={item.city}
-              />
-            ))}
-            {posts.map((post, index) => (
-              <ItemCard
-                key={index}
-                images={post.images}
-                title={post.title}
-                date={displayTimeSince(post.endedAt || post.startedAt)}
-                city={post.location}
-              />
+            {posts.map((post) => (
+              <ItemCard key={post.title} post={post} />
             ))}
           </div>
         </main>
