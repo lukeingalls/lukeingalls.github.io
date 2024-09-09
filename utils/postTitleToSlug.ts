@@ -1,5 +1,9 @@
 import { Post } from "@/data/types";
 
 export default function postTitleToSlug(post: Post) {
-  return `/p/${post.title.toLowerCase().replace(/ /g, "-")}`;
+  return post.title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
 }

@@ -39,7 +39,21 @@ export const posts: Post[] = [
       "/images/education/chap_8.JPG",
     ],
     title: "Chaparral High School",
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          I was graduated from Chaparral High School in 2018. I was #10 in the
+          class of 2018.
+        </p>
+        <br />
+        <p>
+          While at Chaparral I was on the robotics team all 4 years and led it
+          in my Senior year. Over that time, we won our division twice and
+          competed at the regional competition in Arkansas after each of those
+          wins.
+        </p>
+      </>
+    ),
     location: "Parker, CO",
     startedAt: new Date("2014-08-20"),
     endedAt: new Date("2018-05-24"),

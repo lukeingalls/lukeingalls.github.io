@@ -17,8 +17,7 @@ function Header() {
           <option>san francisco</option>
         </select>
         <select className="bg-white border border-gray-300 rounded-md p-1">
-          <option>for sale</option>
-          <option>all</option>
+          <option>about luke</option>
         </select>
       </div>
       <div className="flex items-center space-x-4 pr-4">
@@ -143,7 +142,7 @@ function ItemCard({ post }: ItemCardProps) {
   return (
     <a
       className="border rounded shadow-md hover:shadow-lg transition-shadow aspect-square relative"
-      href={"url" in post ? post.url : postTitleToSlug(post)}
+      href={"url" in post ? post.url : `/p/${postTitleToSlug(post)}`}
       target={post.type === "link" ? "_blank" : undefined}
     >
       {/* Image Gallery */}
@@ -226,6 +225,7 @@ function SearchBar() {
   return (
     <div className="sticky top-[45px] bg-white border-b border-gray-300 py-4 z-40">
       <div className="flex items-center gap-2 h-[45px]">
+        {/* TODO */}
         <input
           type="text"
           placeholder="search for posts"

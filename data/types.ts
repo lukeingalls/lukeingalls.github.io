@@ -24,7 +24,7 @@ export type Post =
     } & (
       | {
           type: "post";
-          description: string;
+          description: React.ReactNode;
         }
       | {
           type: "link";
