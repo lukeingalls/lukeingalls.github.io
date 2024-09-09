@@ -126,7 +126,31 @@ export const posts: Post[] = [
       "/images/education/cu_6.jpg",
     ],
     title: "BS Computer Science",
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          College was an interesting experience for me. It was an unusual
+          experience be cause COVID hit 1.5 years into it and I also graduated a
+          year early.
+        </p>
+        <br />
+        <p>
+          In retrospect, I was too focused on the financial side of college. I
+          didn&apos;t want to take any loans out and so I focused almost
+          entirely on education. Anything that cost money I avoided and so I
+          didn&apos;t get much of an advantage in terms of networking (and it
+          heavily influenced my decision to stay in state).
+        </p>
+        <br />
+        <p>
+          While I was there, I was a course assistant for Algorithms, Operating
+          Systems, and Software Development Methods. This meant I held office
+          hours to tutor other undergraduates on the coursework. Most of this
+          was done remotely during COVID.
+        </p>
+        <br />
+      </>
+    ),
     location: "Boulder, CO",
     startedAt: new Date("2018-08-20"),
     endedAt: new Date("2021-05-06"),
