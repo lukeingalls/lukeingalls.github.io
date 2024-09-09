@@ -48,7 +48,35 @@ export const posts: Post[] = [
       "/images/cars/eos_3.jpeg",
     ],
     title: "2008 volkswagen eos",
-    description: "This is a 2015 Toyota Camry",
+    description: (
+      <>
+        <p>
+          I spent all of the money I earned from working at the golf course to
+          buy this EOS. It was fun having a convertible -- especially a hard top
+          one. It ended up being one of my favorite past times in high school. I
+          would just drive around and enjoy the car. My favorite areas were near
+          Elizabeth especially on Delbert road.
+        </p>
+        <br />
+        <p>
+          Unfortunately, I ended up losing this car to a hail storm. I was
+          driving home from my golf maintanence job and it just started hailing
+          on me. I would really not recommend driving through hail like that. I
+          was watching the windsheild flex and just hoping that it the hail
+          wouldn&apos;t break all the way through that or the moonroof.
+          Fortunately, the hail let up pretty quick but the damage done to the
+          car exceeded it&apos;s value so the insurance company totalled it out.
+        </p>
+        <br />
+        <p>
+          That ended up being a bit of a blessing. I ended up putting all that
+          money toward tuition during college. I would&apos;ve enjoyed having
+          that car but I think the stress of car expenses wouldn&apos;t have
+          been great for me (and I probably wouldn&apos;t have elected to sell
+          it otherwise).
+        </p>
+      </>
+    ),
     location: "Parker, CO",
     startedAt: new Date("2017-07-30"),
     endedAt: new Date("2018-07-04"),

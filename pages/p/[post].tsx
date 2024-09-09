@@ -131,7 +131,7 @@ export default function PostPage({ title }: { title: string }) {
                     console.log("mouse move");
                     setSelectedImageIdx(index);
                   }}
-                  className={`shadow cursor-pointer hover:opacity-80 hover:border-orange-500 border-2 border-white object-cover ml-[-2px] w-[50px] h-[50px] ${
+                  className={`shadow cursor-pointer hover:opacity-80 border-2 object-cover ml-[-2px] w-[50px] h-[50px] ${
                     selectedImageIdx === index
                       ? "border-orange-500 z-10"
                       : "border-white"
