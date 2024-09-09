@@ -225,11 +225,15 @@ function SearchBar() {
   return (
     <div className="sticky top-[45px] bg-white border-b border-gray-300 py-4 z-40">
       <div className="flex items-center gap-2 h-[45px]">
-        {/* TODO */}
         <input
           type="text"
           placeholder="search for posts"
           className="w-full border border-gray-300 rounded p-2"
+          onChange={(e) =>
+            pushFilter(id, (post) =>
+              post.title.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          }
         />
         <button className="bg-gray-100 text-black p-2 border border-gray-300 rounded w-[45px]">
           🔍
